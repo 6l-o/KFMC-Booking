@@ -1,0 +1,157 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Booking.SiteMaster" %>
+
+<!DOCTYPE html>
+
+
+<!--This xlmns is important for DataTables implementation on master page-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Booking</title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+
+    <%--used http://en.faviconico.org/favicon to convert application logo into a favicon--%>
+
+    <link href="~/moviesLogo-favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <style type="text/css">
+        .auto-style1 {
+            float: left;
+            padding: 15px 15px;
+            font-size: x-large;
+            line-height: 20px;
+            height: 50px;
+            color: #1A76A9;
+        }
+    </style>
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+
+        </asp:ScriptManager>
+
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+
+
+                    <a class="auto-style1" runat="server" href="~/">Booking</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+
+                        <li><a runat="server" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false" href="~/WhatsNew/default">Whats New<span class="caret"></span> </a>
+                            <ul class="dropdown-menu">
+                                
+                                <li><a href="~/WhatsNew/NowAvailable.aspx" runat="server">Available Hotel</a></li>
+                               
+                            </ul>
+                        </li>
+                        <li><a runat="server" href="~/Hotels">Hotels</a></li>
+                        <li><a runat="server" id="ticketLink" visible="false" href="~/OrderTicket/Ticket.aspx">Order Ticket</a></li>
+                        <li><a runat="server" id="loginLink" visible="true" href="~/Account/Login">Log in</a></li>
+                        <li><a runat="server" id="signupLink" visible="true" href="~/Account/Signup">Sign up</a></li>
+
+
+                        <li><a runat="server" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                            aria-haspopup="true" aria-expanded="false" id="adminLink" visible="false" href="~/Admin/default">Admin<span class="caret"></span> </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="~/Admin/HotelsManagement.aspx" runat="server">Hotels Management</a></li>
+                                <li><a href="~/Admin/CitiesManagement.aspx" runat="server">Cities Management</a></li>
+                                <li class="divider" role="separator"></li>
+                                <li><a href="~/Admin/ChangePassword.aspx" runat="server">Change Password</a></li>
+                                <li><a href="~/Admin/passwordRecovery.aspx" runat="server">Password Recovery</a></li>
+                                <li><a href="~/Admin/showRoles.aspx" runat="server">Show Roles</a></li>
+                                <li><a href="~/Admin/userAcctMgr.aspx" runat="server">User Account Manager</a></li>
+                            </ul>
+                        </li>
+
+
+
+                        <li><a runat="server" href="~/About">About Us</a></li>
+                    </ul>
+
+                    <div class="loginDisplay">
+                        <br />
+                        <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                            <AnonymousTemplate>
+                                [ <a href="~/Account/Login.aspx" id="HeadLoginStatus" runat="server">Log In</a> ]
+                            </AnonymousTemplate>
+                            <LoggedInTemplate>
+
+                                <span style="position:center; color: #ffe1f2;">Welcome <span class="bold">
+                                    <asp:LoginName ID="HeadLoginName" runat="server" />
+                                </span>! </span>
+                                [
+                                <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
+                                    LogoutPageUrl="~/Default.aspx" />
+                                ]
+                            </LoggedInTemplate>
+                        </asp:LoginView>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <p>&copy; <%: DateTime.Now.Year %> - Booking</p>
+            </footer>
+        </div>
+
+
+    </form>
+
+    <!--script from party project-->
+    <script type="text/javascript" src="/Scripts/clientSide.js"></script>
+
+    <!--DataTables implementation on master page-->
+    <script src="jquery-1.11.2.js"></script>
+    <link href="//cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <!--DataTables implementation on master page-->
+    <p>
+</body>
+
+</html>

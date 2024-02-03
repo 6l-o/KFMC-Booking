@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="moviesConStrxxx-Web.config Connection String" description="moviesConStrxxx Connection String used in web.config by the application to access the database." defaultValue="Data Source=MOMEK\SQLEXP2017;Initial Catalog=db_a763cd_movies_v9;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\kingFahadIntern2021\\projects\\movies-dev\\movies\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='moviesConStrxxx']/@connectionString" />
+  </parameter>
+  <parameter name="moviesConStr-Web.config Connection String" description="moviesConStr Connection String used in web.config by the application to access the database." defaultValue="Data Source=SQL5085.site4now.net;Initial Catalog=db_a763cd_movies;User Id=db_a763cd_movies_admin;Password=movies123" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\kingFahadIntern2021\\projects\\movies-dev\\movies\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='moviesConStr']/@connectionString" />
+  </parameter>
+</parameters>
